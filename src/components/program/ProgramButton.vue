@@ -2,7 +2,6 @@
   <button
     :class="twMerge(outerClass, buttonClass)"
     :disabled="disabled"
-    @click="$emit('click')"
   >
     <div :class="innerClass">
       <div
