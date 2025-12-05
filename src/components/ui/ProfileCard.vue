@@ -231,9 +231,9 @@ const cardStyle = computed(() => ({
   '--inner-gradient': props.innerGradient ?? DEFAULT_INNER_GRADIENT
 }));
 
-const handleContactClick = () => {
-  emit('contactClick');
-};
+// const handleContactClick = () => {
+//   emit('contactClick');
+// };
 
 const handleAvatarError = (event: Event) => {
   const target = event.target as HTMLImageElement;
