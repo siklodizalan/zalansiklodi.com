@@ -223,9 +223,6 @@ async function submitApplication() {
             </div>
         </div>
         <form name="coaching-application" netlify netlify-honeypot="bot-field" hidden>
-            <input type="text" name="Full name" />
-            <input type="email" name="Email" />
-            <input type="text" name="Instagram handle" />
             <input type="hidden" name="bot-field" />
         </form>
     </section>
