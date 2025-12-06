@@ -222,7 +222,23 @@ async function submitApplication() {
                 </div>
             </div>
         </div>
-        <form name="coaching-application" netlify netlify-honeypot="bot-field" hidden>
+        <form 
+            name="coaching-application" 
+            method="POST"
+            netlify 
+            netlify-honeypot="bot-field"
+            hidden
+        >
+            <input type="hidden" name="form-name" value="coaching-application" />
+
+            <input type="text" name="What are your primary goals in CrossFit over the next 3-6 months?" />
+            <input type="text" name="What's the biggest bottleneck holding you back from reaching those goals?" />
+            <input type="text" name="How serious are you about investing time, effort, and money into achieving these goals?" />
+            <input type="text" name="If we're aligned and you're approved for coaching, when are you ready to start?" />
+            <input type="text" name="Full name" />
+            <input type="email" name="Email" />
+            <input type="text" name="Instagram handle" />
+
             <input type="hidden" name="bot-field" />
         </form>
     </section>
