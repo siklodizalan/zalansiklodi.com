@@ -47,7 +47,7 @@ const cardStyles: Record<number, CardStyle> = {
 const programDetails: Record<number, Program> = {
     0: {
         title: "1:1 Individual Coaching",
-        price: "$100/month",
+        price: "€100/month",
         specs: [
             "Customized training, nutrition, and lifestyle program tailored to your needs",
             //"Monthly video consultations",
@@ -61,7 +61,7 @@ const programDetails: Record<number, Program> = {
     },
     1: {
         title: "Competitor Programming",
-        price: "$50/month",
+        price: "€50/month",
         specs: [
             "Weekly programming with warm-ups and training intent.",
             "Season-based periodization aligned with the CrossFit Games calendar.",
@@ -75,7 +75,7 @@ const programDetails: Record<number, Program> = {
     },
     2: {
         title: "General Fitness Program",
-        price: "$30/month",
+        price: "€30/month",
         specs: [
             "Daily 30-60 minute sessions that fit your schedule.",
             "Structured cycles to build strength, stamina, and capacity.",
@@ -88,7 +88,7 @@ const programDetails: Record<number, Program> = {
     },
     3: {
         title: "Affiliate Programming",
-        price: "$60/month",
+        price: "€60/month",
         specs: [
             "Daily class plans with warm-ups, cool-downs, and scaling.",
             //"Coaching videos and notes to guide your trainers.",

@@ -72,6 +72,30 @@ const textareaClasses = (question: string) =>
   focusState[question]
     ? '!border-[color:var(--color)] ring-2 ring-[color:var(--color)]/30'
     : '!border-[color:var(--color)]/50';
+
+async function submitApplication() {
+  const payload = {
+    "form-name": "coaching-application",
+    ...form,
+  };
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(payload).toString(),
+    });
+
+    alert("Application submitted successfully!");
+    
+    Object.keys(form).forEach(key => form[key] = "");
+    currentStep.value = 0;
+
+  } catch (error) {
+    console.error("Submission error", error);
+    alert("Something went wrong submitting your application.");
+  }
+}
 </script>
 
 <template>
@@ -165,6 +189,7 @@ const textareaClasses = (question: string) =>
                 <div class="w-full flex items-center justify-between gap-x-2">
                     <ProgramButton 
                         variant="transparent"
+                        button-class="max-w-1/3"
                         :disabled="currentStep === 0"
                         @click="currentStep -= 1"
                     >
@@ -173,36 +198,15 @@ const textareaClasses = (question: string) =>
                             Prev
                         </div>
                     </ProgramButton>
-                    
-                    <form 
+                    <ProgramButton
                         v-if="currentStep === steps.length - 1"
-                        name="coaching-application"
-                        netlify
-                        netlify-honeypot="bot-field"
-                        method="POST"
-                        class="w-full sm:w-[250px]"
+                        :variant="steps[currentStep]?.buttonVariant || 'pink'"
+                        :disabled="!isLastStepComplete"
+                        button-class="w-2/3 sm:w-[250px]"
+                        @click="submitApplication"
                     >
-                        <input type="hidden" name="form-name" value="coaching-application" />
-                        <input type="hidden" name="bot-field" />
-
-                        <input 
-                            v-for="(answer, question) in form"
-                            :key="question"
-                            type="hidden"
-                            :name="question"
-                            :value="answer"
-                        />
-
-                        <ProgramButton
-                            :variant="steps[currentStep]?.buttonVariant || 'pink'"
-                            :disabled="!isLastStepComplete"
-                            buttonClass="!w-full"
-                            type="submit"
-                        >
-                            Apply!
-                        </ProgramButton>
-                    </form>
-
+                        Apply!
+                    </ProgramButton>
                     <ProgramButton 
                         v-if="currentStep < steps.length - 1"
                         :variant="steps[currentStep]?.buttonVariant || 'pink'"
@@ -218,6 +222,12 @@ const textareaClasses = (question: string) =>
                 </div>
             </div>
         </div>
+        <form name="coaching-application" netlify netlify-honeypot="bot-field" hidden>
+            <input type="text" name="Full name" />
+            <input type="email" name="Email" />
+            <input type="text" name="Instagram handle" />
+            <input type="hidden" name="bot-field" />
+        </form>
     </section>
 </template>
 
