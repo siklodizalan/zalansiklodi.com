@@ -121,7 +121,7 @@ async function submitApplication() {
 
 <template>
     <section ref="rootSection" class="px-4">
-        <div class="sticky top-0 section gap-5 flex flex-col items-center justify-center min-h-screen">
+        <div class="sticky top-0 section gap-5 flex flex-col items-center justify-center min-h-[100dvh]">
             <div class="text-center">
                 <span class="text-lg mb-2 text-pink-200 font-supercharge">
                     This is strictly for athletes serious about unlocking the next level.

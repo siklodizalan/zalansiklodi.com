@@ -140,7 +140,7 @@ onMounted(() => {
         <!-- <span class="text-4xl md:text-6xl font-extrabold text-center text-white max-w-4xl px-4">
             Programming Options
         </span> -->
-        <div class="grid-cols-2 min-h-screen w-full sticky top-0 items-center justify-center hidden md:grid">
+        <div class="grid-cols-2 min-h-[100dvh] w-full sticky top-0 items-center justify-center hidden md:grid">
             <div class="items-center justify-end flex h-full relative">
                 <ProgramCard
                     :images="currentStyle?.images"
@@ -158,7 +158,7 @@ onMounted(() => {
             </div>
             <div></div>
         </div>
-        <div id="coaching-1" class="min-h-screen h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative md:absolute top-0">
+        <div id="coaching-1" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative md:absolute top-0">
             <div class="grid grid-cols-1 grid-rows-[auto_auto] md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
                 <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(244, 140, 244);">
@@ -190,7 +190,7 @@ onMounted(() => {
                 
             </div>
         </div>
-        <div id="coaching-2" class="min-h-screen h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
+        <div id="coaching-2" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
             <div class="grid grid-cols-1 grid-rows-[auto_auto]  md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
                 <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(244, 218, 140);">
@@ -221,7 +221,7 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div id="coaching-3" class="min-h-screen h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
+        <div id="coaching-3" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
             <div class="grid grid-cols-1 grid-rows-[auto_auto]  md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
                 <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(129, 140, 248);">
@@ -252,7 +252,7 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div id="coaching-4" class="min-h-screen h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
+        <div id="coaching-4" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
             <div class="grid grid-cols-1 grid-rows-[auto_auto]  md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
                 <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(244, 218, 140);">
