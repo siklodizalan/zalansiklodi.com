@@ -4,7 +4,7 @@ import CountUp from './ui/CountUp.vue';
 </script>
 
 <template>
-    <div class="min-h-[100dvh] w-full flex flex-col items-center justify-center">
+    <div class="sm:min-h-screen w-full flex flex-col items-center justify-center">
         <span class="sm:mb-5 text-4xl md:text-6xl font-extrabold text-center text-white max-w-4xl px-4 z-10">
             My Coaching and Programs <br class="hidden sm:block" />
             have transformed tens of <br class="hidden sm:block" />

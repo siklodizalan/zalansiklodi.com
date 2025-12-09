@@ -137,10 +137,10 @@ onMounted(() => {
 
 <template>
     <div class="px-4 section relative flex flex-col items-center justify-center overflow-visible w-full mx-auto">
-        <!-- <span class="text-4xl md:text-6xl font-extrabold text-center text-white max-w-4xl px-4">
+        <!-- <span class="text-4xl sm:text-6xl font-extrabold text-center text-white max-w-4xl px-4">
             Programming Options
         </span> -->
-        <div class="grid-cols-2 min-h-[100dvh] w-full sticky top-0 items-center justify-center hidden md:grid">
+        <div class="grid-cols-2 sm:min-h-screen w-full sticky top-0 items-center justify-center hidden sm:grid">
             <div class="items-center justify-end flex h-full relative">
                 <ProgramCard
                     :images="currentStyle?.images"
@@ -158,13 +158,13 @@ onMounted(() => {
             </div>
             <div></div>
         </div>
-        <div id="coaching-1" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative md:absolute top-0">
-            <div class="grid grid-cols-1 grid-rows-[auto_auto] md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
-                <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
+        <div id="coaching-1" class="min-h-[700px] sm:min-h-screen w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative sm:absolute top-0">
+            <div class="grid grid-cols-1 grid-rows-[auto_auto] sm:grid-cols-2 sm:gap-20 xl:gap-10 sm:grid-rows-1 absolute size-full">
+                <div class="flex flex-col items-start justify-center sm:col-span-1 sm:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(244, 140, 244);">
                         1:1 Individual Program
                     </h3>
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl md:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-pink-200">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl sm:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-pink-200">
                         Elite personalized training program tailored to your goals, weaknesses, and lifestyle.
                     </h2>
                     <div class="flex items-center justify-center gap-4">
@@ -172,7 +172,7 @@ onMounted(() => {
                         <ProgramBadge text="Top Rated Coaching🏅" iconColor="text-pink-300" />
                     </div>
                 </div>
-                <div class="flex items-center min-h-[400px] justify-center md:hidden w-full h-fit">
+                <div class="flex items-center min-h-[350px] justify-center sm:hidden w-full">
                     <ProgramCard
                         :images="cardStyles[0]?.images"
                         :outerBg="cardStyles[0]?.outerBg"
@@ -190,13 +190,13 @@ onMounted(() => {
                 
             </div>
         </div>
-        <div id="coaching-2" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
-            <div class="grid grid-cols-1 grid-rows-[auto_auto]  md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
-                <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
+        <div id="coaching-2" class="min-h-[700px] sm:min-h-screen w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
+            <div class="grid grid-cols-1 grid-rows-[auto_auto] sm:grid-cols-2 sm:gap-20 xl:gap-10 sm:grid-rows-1 absolute size-full">
+                <div class="flex flex-col items-start justify-center sm:col-span-1 sm:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(244, 218, 140);">
                         Competitor Program
                     </h3>
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl md:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-yellow-200">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl sm:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-yellow-200">
                         Elite-level training for competitive CrossFit athletes looking to reach the next level.
                     </h2>
                     <div class="flex items-center justify-center gap-4">
@@ -204,7 +204,7 @@ onMounted(() => {
                         <!-- <ProgramBadge text="Performance Driven📈" iconColor="text-yellow-300" /> -->
                     </div>
                 </div>
-                <div class="flex items-center min-h-[400px] justify-center md:hidden w-full h-fit">
+                <div class="flex items-center min-h-[350px] justify-center sm:hidden w-full">
                     <ProgramCard
                         :images="cardStyles[1]?.images"
                         :outerBg="cardStyles[1]?.outerBg"
@@ -221,13 +221,13 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div id="coaching-3" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
-            <div class="grid grid-cols-1 grid-rows-[auto_auto]  md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
-                <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
+        <div id="coaching-3" class="min-h-[700px] sm:min-h-screen w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
+            <div class="grid grid-cols-1 grid-rows-[auto_auto] sm:grid-cols-2 sm:gap-20 xl:gap-10 sm:grid-rows-1 absolute size-full">
+                <div class="flex flex-col items-start justify-center sm:col-span-1 sm:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(129, 140, 248);">
                         General Fitness Program
                     </h3>
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl md:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-blue-200">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl sm:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-blue-200">
                         Accessible fitness programming for everyday athletes focused on health and wellness.
                     </h2>
                     <div class="flex items-center justify-center gap-4">
@@ -235,7 +235,7 @@ onMounted(() => {
                         <!-- <ProgramBadge text="#1 Right Now⏳" iconColor="text-blue-300" /> -->
                     </div>
                 </div>
-                <div class="flex items-center min-h-[400px] justify-center md:hidden w-full h-fit">
+                <div class="flex items-center min-h-[350px] justify-center sm:hidden w-full">
                     <ProgramCard
                         :images="cardStyles[2]?.images"
                         :outerBg="cardStyles[2]?.outerBg"
@@ -252,13 +252,13 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div id="coaching-4" class="min-h-[100dvh] h-fit mb-5 w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
-            <div class="grid grid-cols-1 grid-rows-[auto_auto]  md:grid-cols-2 md:gap-20 xl:gap-10 md:grid-rows-1 absolute size-full">
-                <div class="flex flex-col items-start justify-center md:col-span-1 md:col-start-2 text-left sm:gap-4">
+        <div id="coaching-4" class="min-h-[700px] sm:min-h-screen w-full flex items-center justify-center overflow-hidden max-w-screen-xl mx-auto relative">
+            <div class="grid grid-cols-1 grid-rows-[auto_auto]  sm:grid-cols-2 sm:gap-20 xl:gap-10 sm:grid-rows-1 absolute size-full">
+                <div class="flex flex-col items-start justify-center sm:col-span-1 sm:col-start-2 text-left sm:gap-4">
                     <h3 class="text-2xl font-medium sm:mb-2 text-left text-balance font-supercharge" style="color: rgb(244, 218, 140);">
                         Affiliate Program
                     </h3>
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl md:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-yellow-200">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-2xl sm:text-3xl lg:text-4xl text-left text-balance sm:mb-10 text-yellow-200">
                         Daily, well-rounded programming designed for group classes of all levels.
                     </h2>
                     <div class="flex items-center justify-center gap-4">
@@ -266,7 +266,7 @@ onMounted(() => {
                         <!-- <ProgramBadge text="Group Essential🤝" iconColor="text-yellow-300" /> -->
                     </div>
                 </div>
-                <div class="flex items-center min-h-[400px] justify-center md:hidden w-full h-fit">
+                <div class="flex items-center min-h-[350px] justify-center sm:hidden w-full">
                     <ProgramCard
                         :images="cardStyles[3]?.images"
                         :outerBg="cardStyles[3]?.outerBg"
