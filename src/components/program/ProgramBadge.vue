@@ -4,7 +4,7 @@
             viewBox="-5.0 -10.0 110.0 135.0" :class="twMerge('h-20 w-10', iconColor)">
             <path fill="currentColor" :d="path"></path>
         </svg>
-        <p class="text-sm text-center">{{ text }}</p>
+        <p class="text-sm text-center text-white">{{ text }}</p>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
             viewBox="-5.0 -10.0 110.0 135.0" :class="twMerge('h-20 w-10 scale-x-[-1]', iconColor)">
             <path fill="currentColor" :d="path"></path>

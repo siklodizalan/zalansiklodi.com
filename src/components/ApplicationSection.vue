@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MoveLeftIcon, MoveRightIcon } from 'lucide-vue-next';
+import { CheckCircleIcon, MoveLeftIcon, MoveRightIcon } from 'lucide-vue-next';
 import ApplicationStepper from './application/ApplicationStepper.vue';
 import ProgramButton, { type Variant } from './program/ProgramButton.vue';
 import { computed, reactive, ref } from 'vue';
@@ -47,7 +47,7 @@ const steps: ApplicationStep[] = [
     buttonVariant: 'rose',
     question: "Please leave your name and email so I can get in touch with you!",
     answerType: 'multiple',
-    questions: ['Full name', 'Email', 'Instagram handle']
+    questions: ['Full name', 'Email', 'Instagram']
   },
 ]
 
@@ -57,6 +57,8 @@ defineExpose({
 });
 
 const currentStep = ref(0);
+const isApplicationCompleted = ref(false)
+const error = ref('')
 
 const form = reactive<Record<string, any>>({})
 const focusState = reactive<Record<string, boolean>>({});
@@ -74,27 +76,46 @@ const textareaClasses = (question: string) =>
     : '!border-[color:var(--color)]/50';
 
 async function submitApplication() {
-  const payload = {
-    "form-name": "coaching-application",
-    ...form,
-  };
+    error.value = ''
 
-  try {
-    await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(payload).toString(),
-    });
+    if (form["Full name"].trim().length < 3) {
+        error.value = "Please enter your full name.";
+        form["Full name"] = "";
+        return
+    }
 
-    alert("Application submitted successfully!");
-    
-    Object.keys(form).forEach(key => form[key] = "");
-    currentStep.value = 0;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form["Email"])) {
+        error.value = "Invalid email";
+        form["Email"] = "";
+        return
+    }
 
-  } catch (error) {
-    console.error("Submission error", error);
-    alert("Something went wrong submitting your application.");
-  }
+    if (form["Instagram"].trim().length < 3) {
+        error.value = "Please enter a valid Instagram handle.";
+        form["Instagram"] = "";
+        return
+    }
+
+    const payload = {
+        "form-name": "coaching-application",
+        ...form,
+    };
+
+    try {
+        await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(payload).toString(),
+        });
+
+        Object.keys(form).forEach(key => form[key] = "");
+        currentStep.value = 0;
+        isApplicationCompleted.value = true
+
+    } catch (err) {
+        error.value = `Submission error: ${err}`
+        isApplicationCompleted.value = false
+    }
 }
 </script>
 
@@ -105,7 +126,7 @@ async function submitApplication() {
                 <span class="text-lg mb-2 text-pink-200 font-supercharge">
                     This is strictly for athletes serious about unlocking the next level.
                 </span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-center text-balance mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold mb-3 text-center text-balance mb-8 text-white">
                     APPLY FOR A FREE PERFORMANCE CONSULT
                 </h2>
             </div>
@@ -125,68 +146,82 @@ async function submitApplication() {
                 </div>
 
                 <div 
-                    class="h-[300px] w-full p-5 md:p-7 overflow-hidden space-y-7 bg-pink-50/5 border border-[color:var(--color)]/50 border-dotted rounded-lg" 
+                    class="h-[300px] w-full p-5 md:p-7 overflow-hidden space-y-7 bg-[color:var(--color)]/5 border border-[color:var(--color)]/50 border-dotted rounded-lg flex flex-col items-center justify-center" 
                     :style="{ opacity: 1, transform: 'none', '--color': steps[currentStep]?.color }"
                 >
-                    <div class="w-full" style="opacity: 1; transform: none;">
-                        <div class="flex items-center justify-start w-full min-h-10 py-2">
-                            <div 
-                                class="min-h-8 md:min-h-12 rounded-md overflow-hidden bg-[color:var(--color)]/5 border border-[color:var(--color)] flex items-center justify-center text-white font-semibold shadow-lg w-full"
-                                style="width: 100%; opacity: 1;"
-                            >
-                                <h5 class="text-sm md:text-lg font-medium text-center text-[color:var(--color)]">
-                                    {{ steps[currentStep]?.question }}
-                                </h5>
+                    <div v-if="isApplicationCompleted">
+                        <div class="flex flex-col items-center justify-center text-center">
+                            <div class="w-20 h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-[hsl(142_76%_36%)]/20 flex items-center justify-center">
+                                <CheckCircleIcon class="text-green-500 h-10 w-10 text-success" />
                             </div>
+                            <h2 class="text-xl sm:text-3xl font-bold sm:mb-4">Application Submitted!</h2>
+                            <p class="sm:text-lg text-muted-foreground">
+                                Thank you for your interest! I'll review your application and get back to you within 24 hours.
+                            </p>
                         </div>
                     </div>
+                    <template v-else>
+                        <div class="w-full" style="opacity: 1; transform: none;">
+                            <div class="flex items-center justify-start w-full min-h-10 py-2">
+                                <div 
+                                    class="min-h-8 md:min-h-12 rounded-md overflow-hidden bg-[color:var(--color)]/5 border border-[color:var(--color)] flex items-center justify-center text-white font-semibold shadow-lg w-full"
+                                    style="width: 100%; opacity: 1;"
+                                >
+                                    <h5 class="text-sm md:text-lg font-medium text-center text-[color:var(--color)]">
+                                        {{ steps[currentStep]?.question }}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
 
-                    <Textarea
-                        v-if="steps[currentStep]?.answerType === 'text'"
-                        v-model="form[steps[currentStep]!.question]"
-                        rows="5"
-                        :class="twMerge('w-full !bg-[color:var(--color)]/5 rounded-md transition-all duration-200', textareaClasses(steps[currentStep]!.question))"
-                        @focus="focusState[steps[currentStep]!.question] = true"
-                        @blur="focusState[steps[currentStep]!.question] = false"
-                    />
-
-                    <div v-else-if="steps[currentStep]?.answerType === 'option'" class="flex flex-col gap-y-4">
-                        <div 
-                            v-for="option in steps[currentStep]?.options"
-                            :key="option"
-                            class="flex sm:grid sm:grid-cols-2 gap-x-2 items-center"
-                        >
-                            <div class="flex sm:justify-end">
-                                <Checkbox 
-                                    v-model="form[steps[currentStep]!.question]"
-                                    binary
-                                    :true-value="option"
-                                    :false-value="null"
+                        <Textarea
+                            v-if="steps[currentStep]?.answerType === 'text'"
+                            v-model="form[steps[currentStep]!.question]"
+                            rows="5"
+                            placeholder="Type here..."
+                            :class="twMerge('!text-[color:var(--color)] w-full !bg-[color:var(--color)]/5 rounded-md transition-all duration-200', textareaClasses(steps[currentStep]!.question))"
+                            @focus="focusState[steps[currentStep]!.question] = true"
+                            @blur="focusState[steps[currentStep]!.question] = false"
+                        />
+                        <div v-else-if="steps[currentStep]?.answerType === 'option'" class="flex flex-col gap-y-4">
+                            <div 
+                                v-for="option in steps[currentStep]?.options"
+                                :key="option"
+                                class="flex sm:grid sm:grid-cols-2 gap-x-2 items-center"
+                            >
+                                <div class="flex sm:justify-end">
+                                    <Checkbox 
+                                        v-model="form[steps[currentStep]!.question]"
+                                        binary
+                                        :true-value="option"
+                                        :false-value="null"
+                                    />
+                                </div>
+                                <span class="text-[color:var(--color)]">{{ option }}</span>
+                            </div>
+                        </div>
+                        <div v-else class="w-full flex flex-col gap-y-4">
+                            <div 
+                                v-for="question in steps[currentStep]?.questions"
+                                :key="question"
+                                class="flex sm:grid sm:grid-cols-2 gap-x-2 items-center"
+                            >
+                                <span class="text-[color:var(--color)] sm:text-end whitespace-nowrap">{{ question }}:</span>
+                                <Textarea
+                                    v-model="form[question]"
+                                    rows="1"
+                                    :placeholder="`Your ${question.toLowerCase()}...`"
+                                    :class="twMerge('w-full sm:w-1/2 !bg-[color:var(--color)]/5 rounded-md transition-all duration-200', textareaClasses(question))"
+                                    @focus="focusState[question] = true"
+                                    @blur="focusState[question] = false"
                                 />
                             </div>
-                            <span class="text-[color:var(--color)]">{{ option }}</span>
                         </div>
-                    </div>
-
-                    <div v-else class="flex flex-col gap-y-4">
-                        <div 
-                            v-for="question in steps[currentStep]?.questions"
-                            :key="question"
-                            class="flex sm:grid sm:grid-cols-2 gap-x-2 items-center"
-                        >
-                            <span class="text-[color:var(--color)] sm:text-end whitespace-nowrap">{{ question }}:</span>
-                            <Textarea
-                                v-model="form[question]"
-                                rows="1"
-                                @focus="focusState[question] = true"
-                                @blur="focusState[question] = false"
-                                :class="twMerge('w-full sm:w-1/2 !bg-[color:var(--color)]/5 rounded-md transition-all duration-200', textareaClasses(question))"
-                            />
-                        </div>
-                    </div>
+                        <span class="text-xs text-red-500">{{ error }}</span>
+                    </template>
                 </div>
 
-                <div class="w-full flex items-center justify-between gap-x-2">
+                <div v-if="!isApplicationCompleted" class="w-full flex items-center justify-between gap-x-2">
                     <ProgramButton 
                         variant="transparent"
                         button-class="max-w-1/3"

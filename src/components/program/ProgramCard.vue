@@ -31,7 +31,7 @@
               borderColor: innerBorder
             }"
           >
-            <div class="w-full h-full rounded-[1.25rem] md:rounded-[2rem] overflow-hidden relative">
+            <div class="w-full h-full rounded-[1.25rem] md:rounded-[2rem] overflow-hidden relative text-white">
               <template v-if="i === 0">
                 <slot name="middle">
                   <img

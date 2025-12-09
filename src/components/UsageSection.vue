@@ -4,7 +4,7 @@ import CountUp from './ui/CountUp.vue';
 </script>
 
 <template>
-    <div class="h-screen w-full flex flex-col items-center justify-center">
+    <div class="min-h-screen w-full flex flex-col items-center justify-center">
         <span class="sm:mb-5 text-4xl md:text-6xl font-extrabold text-center text-white max-w-4xl px-4 z-10">
             My Coaching and Programs <br class="hidden sm:block" />
             have transformed tens of <br class="hidden sm:block" />
@@ -21,7 +21,7 @@ import CountUp from './ui/CountUp.vue';
                         :duration="1"
                         :delay="0"
                         :start-when="true"
-                        class-name="count-up-text"
+                        class-name="text-white"
                     />
                 </h1>
                 <p class="text-md sm:text-lg md:text-xl lg:text-2xl opacity-70 mb-2 text-pink-400 tracking-widest font-mono mt-2 md:mt-4 xl:mt-5">Program Users</p>
@@ -49,7 +49,7 @@ import CountUp from './ui/CountUp.vue';
                         :duration="1"
                         :delay="0"
                         :start-when="true"
-                        class-name="count-up-text"
+                        class-name="text-white"
                     />
                 </h1>
                 <p class="text-md sm:text-lg md:text-xl lg:text-2xl opacity-70 mb-2 text-pink-400 tracking-widest font-mono mt-2 md:mt-4 xl:mt-5">1:1 Clients</p>

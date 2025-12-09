@@ -14,7 +14,7 @@
         ></div>
       </div>
 
-      <div class="relative z-10">
+      <div class="relative z-10 text-white">
         <slot />
       </div>
     </div>
