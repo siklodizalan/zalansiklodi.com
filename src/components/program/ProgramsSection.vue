@@ -136,7 +136,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="px-4 section relative flex flex-col items-center justify-center overflow-visible w-full mx-auto">
+    <div class="px-4 section relative flex flex-col items-center justify-center overflow-visible w-full mx-auto gap-y-10 sm:gap-y-0 mb-[100px] sm:mb-0">
         <!-- <span class="text-4xl sm:text-6xl font-extrabold text-center text-white max-w-4xl px-4">
             Programming Options
         </span> -->
